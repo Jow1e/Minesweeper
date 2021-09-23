@@ -1,5 +1,6 @@
 # Minesweeper
 Minesweeper game and bot implementation for tinkoff deep learning exams
+
 `for some reason I wrote everything in English ;) `
 
 About AI:
