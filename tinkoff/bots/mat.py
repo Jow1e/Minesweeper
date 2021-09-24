@@ -5,8 +5,9 @@ from scipy.optimize import nnls
 class BotMat:
 	"""
 	
-	Create linear equations when sees a number > 0 in cell and solves them (making matrix) with Gaussian method
+	Create linear equations when sees a number > 0 in cell and solves them (making matrix) with iterative minimising method
 	Often number of equations is less than variables, it causes many different solutions
+	Sometimes it gives solution not in [0, 1] (for examples gives cell 2)
 	
 	"""
 	
