@@ -7,7 +7,9 @@ from queue import Queue
 
 class Minesweeper:
 	"""
-
+			Top left cell has coords: (1, 1)
+			
+			
 			Board symbols:
 				* Hidden: '.'
 				* Flag: '?'
