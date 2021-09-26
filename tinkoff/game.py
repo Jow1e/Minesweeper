@@ -8,8 +8,8 @@ from queue import Queue
 class Minesweeper:
 	"""
 			Top left cell has coords: (1, 1)
-			
-			
+
+
 			Board symbols:
 				* Hidden: '.'
 				* Flag: '?'
@@ -38,13 +38,14 @@ class Minesweeper:
 	
 	def __init__(self, size: tuple[int, int], n_mines: int, vis: bool = True, seed: int = None):
 		"""
-		
+
 		:param size: (width, height) of board
 		:param n_mines: number of mines on board
 		:param vis: visualise board in console
 		:param seed: random seed to make game repeatable
-		
+
 		"""
+		
 		random.seed(seed)
 		
 		self.vis = vis
@@ -112,6 +113,12 @@ class Minesweeper:
 	def act(self, action: str):
 		if action.lower() == "stop":
 			self.stopped = True
+		elif "save" in action.lower():
+			_, file_name = action.lower().split()
+			self.save(file_name)
+		elif "load" in action.lower():
+			_, file_name = action.lower().split()
+			self.__dict__.update(self.load(file_name).__dict__)
 		else:
 			x, y, action = action.lower().split()
 			
@@ -200,14 +207,18 @@ class Minesweeper:
 		print("\n... saving game ...")
 		with open(path, "wb") as file:
 			pickle.dump(self, file, pickle.HIGHEST_PROTOCOL)
-		print("... game saved!!!")
+		print("... game saved!!! \n")
+		
+		self.show()
 	
 	@staticmethod
 	def load(path: str):
 		print("\n... loading game ...")
 		with open(path, "rb") as file:
 			game_state = pickle.load(file)
-		print("... game loaded!!!")
+		print("... game loaded!!! \n")
+		
+		game_state.show()
 		return game_state
 	
 	def play(self, bot=None, sleep_time=0):
