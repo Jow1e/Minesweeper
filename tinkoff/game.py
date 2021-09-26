@@ -224,7 +224,7 @@ class Minesweeper:
 	def play(self, bot=None, sleep_time=0):
 		while not self.done():
 			if bot is None:
-				action = input("position and action: ")
+				action = input("action: ")
 			else:
 				time.sleep(sleep_time)
 				min_prob, action = bot.act()
