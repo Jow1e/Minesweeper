@@ -1,6 +1,8 @@
 # Minesweeper
 Minesweeper game and bot implementation for tinkoff deep learning exams
 
+To test everything use `test.py`
+
 About AI:
 
 1. Probability: bot gives cell a probability of being a mine (using inclusion-exclusion principle)
